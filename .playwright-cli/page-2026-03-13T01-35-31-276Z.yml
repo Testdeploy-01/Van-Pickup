@@ -1,0 +1,189 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: Leaflet + OSM + OSRM + Dijkstra + Greedy
+      - heading "Van Pickup Planner" [level=1] [ref=e6]
+      - paragraph [ref=e7]: วางแผนเส้นทางรถตู้จากตำแหน่งผู้ใช้ รับผู้โดยสารตามจุดที่ปักไว้ แล้วไปส่งที่ บขส. ปลายทาง โดยลดเวลาเดินทางรวมให้น้อยที่สุด
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: Start Source
+        - strong [ref=e11]: จุดเริ่มจากแผนที่
+      - generic [ref=e12]:
+        - generic [ref=e13]: Pickup Count
+        - strong [ref=e14]: 0 จุด
+      - generic [ref=e15]:
+        - generic [ref=e16]: Map Mode
+        - strong [ref=e17]: เพิ่มจุดรับ
+  - generic [ref=e18]:
+    - complementary [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - paragraph [ref=e23]: Start
+            - heading "จุดเริ่มต้น" [level=2] [ref=e24]
+          - generic [ref=e25]: GPS ถูกปฏิเสธ
+        - paragraph [ref=e26]: "จุดเริ่มจากแผนที่: จุดเริ่มกำหนดเอง (8.3077, 99.4522)"
+        - generic [ref=e27]:
+          - button "ใช้ GPS ปัจจุบัน" [ref=e28] [cursor=pointer]
+          - button "คลิกเลือกจุดเริ่ม" [ref=e29] [cursor=pointer]
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - paragraph [ref=e33]: Destination
+          - heading "ปลายทาง" [level=2] [ref=e34]
+        - generic [ref=e35]: เลือก บขส. ภาคใต้
+        - combobox "เลือก บขส. ภาคใต้" [ref=e36]:
+          - option "เลือกปลายทางจากรายการ"
+          - option "ชุมพร - บขส.ชุมพร" [selected]
+          - option "ระนอง - บขส.ระนอง"
+          - option "สุราษฎร์ธานี - บขส.สุราษฎร์ธานี"
+          - option "นครศรีธรรมราช - บขส.นครศรีธรรมราช"
+          - option "พัทลุง - บขส.พัทลุง"
+          - option "สงขลา - บขส.สงขลา"
+          - option "สตูล - บขส.สตูล"
+          - option "ตรัง - บขส.ตรัง"
+          - option "กระบี่ - บขส.กระบี่"
+          - option "ภูเก็ต - บขส.ภูเก็ต"
+          - option "พังงา - บขส.พังงา"
+          - option "ยะลา - บขส.ยะลา"
+          - option "ปัตตานี - บขส.ปัตตานี"
+          - option "นราธิวาส - บขส.นราธิวาส"
+        - button "เลือกปลายทางบนแผนที่" [ref=e38] [cursor=pointer]
+        - paragraph [ref=e39]: "ปลายทางจากรายการ บขส.: บขส.ชุมพร"
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: Pickups
+            - heading "จุดรับผู้โดยสาร" [level=2] [ref=e44]
+          - generic [ref=e45]: พร้อมใช้งาน
+        - generic [ref=e46]:
+          - button "เปิดโหมดเพิ่มจุดรับ" [active] [ref=e47] [cursor=pointer]
+          - button "ล้างจุดรับทั้งหมด" [ref=e48] [cursor=pointer]
+        - paragraph [ref=e49]: คลิกบนแผนที่เพื่อเพิ่มจุดรับ, คลิก marker เพื่อลบ, หรือ drag marker เพื่อย้ายตำแหน่ง
+        - list [ref=e50]:
+          - listitem [ref=e51]: ยังไม่มีจุดรับผู้โดยสาร
+      - generic [ref=e52]:
+        - generic [ref=e54]:
+          - paragraph [ref=e55]: Compute
+          - heading "คำนวณเส้นทาง" [level=2] [ref=e56]
+        - generic [ref=e57]:
+          - button "คำนวณเส้นทาง" [ref=e58] [cursor=pointer]
+          - button "ล้างผลลัพธ์" [ref=e59] [cursor=pointer]
+        - generic [ref=e60]:
+          - generic [ref=e61]: OSRM Progress
+          - strong [ref=e62]: Use prefetched 1/1 | จุดเริ่มกำหนดเอง (8.3077, 99.4522) -> บขส.ชุมพร
+        - paragraph [ref=e63]: ไม่มีจุดรับ ระบบเรียก Table 1 ครั้ง, pre-fetch Route 2 ครั้ง และใช้ geometry 1 ช่วง
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - paragraph [ref=e67]: Simulation
+          - heading "จำลองการวิ่ง" [level=2] [ref=e68]
+        - generic [ref=e69]:
+          - button "เริ่ม Simulation" [ref=e70] [cursor=pointer]
+          - button "Pause" [disabled] [ref=e71]
+          - button "Reset" [ref=e72] [cursor=pointer]
+        - paragraph [ref=e73]: พร้อมเริ่ม Simulation
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Map
+            - heading "แผนที่เส้นทาง" [level=2] [ref=e79]
+          - generic [ref=e80]:
+            - generic [ref=e81]: "โหมด: เพิ่มจุดรับ"
+            - generic [ref=e82]: คำนวณสำเร็จ
+        - generic "Van pickup route map" [ref=e83]:
+          - generic:
+            - generic:
+              - img
+            - generic:
+              - button "S" [ref=e120] [cursor=pointer]:
+                - generic [ref=e121]: S
+              - button "E" [ref=e123] [cursor=pointer]:
+                - generic [ref=e124]: E
+              - generic [ref=e128] [cursor=pointer]: V
+          - generic:
+            - generic [ref=e84]:
+              - button "Zoom in" [ref=e85] [cursor=pointer]: +
+              - button "Zoom out" [ref=e86] [cursor=pointer]: −
+            - generic [ref=e87]:
+              - link "Leaflet" [ref=e88] [cursor=pointer]:
+                - /url: https://leafletjs.com
+                - img [ref=e89]
+                - text: Leaflet
+              - text: "| ©"
+              - link "OpenStreetMap" [ref=e93] [cursor=pointer]:
+                - /url: https://www.openstreetmap.org/copyright
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: Result
+            - heading "สรุปเส้นทาง" [level=2] [ref=e99]
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: จำนวนช่วงวิ่ง
+              - strong [ref=e103]: 1 ช่วง
+            - generic [ref=e104]:
+              - generic [ref=e105]: ระยะทางรวม
+              - strong [ref=e106]: 274.20 กม.
+            - generic [ref=e107]:
+              - generic [ref=e108]: เวลารวม
+              - strong [ref=e109]: 3 ชม. 24 นาที
+            - generic [ref=e110]:
+              - generic [ref=e111]: ลำดับการวิ่ง
+              - strong [ref=e112]: จุดเริ่มกำหนดเอง (8.3077, 99.4522) -> บขส.ชุมพร
+        - generic [ref=e113]:
+          - generic [ref=e115]:
+            - paragraph [ref=e116]: Complexity
+            - heading "Time Complexity" [level=2] [ref=e117]
+          - generic [ref=e118]:
+            - paragraph [ref=e129]: กราฟปัจจุบันมี V = 2 nodes, E = 2 directed edges, pickup = 0 จุด, Dijkstra ถูกเรียก 1 ครั้ง, pre-fetch Route 2 ครั้ง และใช้ geometry จริง 1 ช่วง (log2V = 1.00)
+            - table [ref=e130]:
+              - rowgroup [ref=e131]:
+                - row "Line Operation Frequency Cost Total" [ref=e132]:
+                  - columnheader "Line" [ref=e133]
+                  - columnheader "Operation" [ref=e134]
+                  - columnheader "Frequency" [ref=e135]
+                  - columnheader "Cost" [ref=e136]
+                  - columnheader "Total" [ref=e137]
+              - rowgroup [ref=e138]:
+                - row "1 OSRM Table API 1 all nodes duration + distance matrix" [ref=e139]:
+                  - cell "1" [ref=e140]
+                  - cell "OSRM Table API" [ref=e141]
+                  - cell "1" [ref=e142]
+                  - cell "all nodes" [ref=e143]
+                  - cell "duration + distance matrix" [ref=e144]
+                - row "2-3 initialize dist / prev V 1 V" [ref=e145]:
+                  - cell "2-3" [ref=e146]
+                  - cell "initialize dist / prev" [ref=e147]
+                  - cell "V" [ref=e148]
+                  - cell "1" [ref=e149]
+                  - cell "V" [ref=e150]
+                - row "4 extract-min / relax edges E logV E logV" [ref=e151]:
+                  - cell "4" [ref=e152]
+                  - cell "extract-min / relax edges" [ref=e153]
+                  - cell "E" [ref=e154]
+                  - cell "logV" [ref=e155]
+                  - cell "E logV" [ref=e156]
+                - row "5 Route API pre-fetch every ordered pair V(V-1) Promise.all 2 prefetched routes" [ref=e157]:
+                  - cell "5" [ref=e158]
+                  - cell "Route API pre-fetch every ordered pair" [ref=e159]
+                  - cell "V(V-1)" [ref=e160]
+                  - cell "Promise.all" [ref=e161]
+                  - cell "2 prefetched routes" [ref=e162]
+                - row "6 Greedy choose next pickup k + 1 Dijkstra (k + 1) * O((V + E) logV)" [ref=e163]:
+                  - cell "6" [ref=e164]
+                  - cell "Greedy choose next pickup" [ref=e165]
+                  - cell "k + 1" [ref=e166]
+                  - cell "Dijkstra" [ref=e167]
+                  - cell "(k + 1) * O((V + E) logV)" [ref=e168]
+                - row "7 reuse pre-fetched geometry k + 1 lookup 1 selected routes" [ref=e169]:
+                  - cell "7" [ref=e170]
+                  - cell "reuse pre-fetched geometry" [ref=e171]
+                  - cell "k + 1" [ref=e172]
+                  - cell "lookup" [ref=e173]
+                  - cell "1 selected routes" [ref=e174]
+            - generic [ref=e175]:
+              - code [ref=e176]: Table API = 1 call for duration + distance matrix
+              - code [ref=e177]: Dijkstra 1 ครั้ง = O((V + E) log V)
+              - code [ref=e178]: Greedy รวม = O((k + 1) * (V + E) log V)
+              - code [ref=e179]: Route API pre-fetch = V(V - 1) ordered pairs in parallel
+              - code [ref=e180]: After Greedy = 0 extra API calls, reuse pre-fetched geometry only

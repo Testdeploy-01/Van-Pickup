@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>แอปวางเส้นทางรถตู้</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23006d77'/%3E%3Cpath d='M14 36h4l4-10 6 16 6-20 6 14h10' fill='none' stroke='%23f7f4ec' stroke-linecap='round' stroke-linejoin='round' stroke-width='5'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="background-shell" aria-hidden="true">
+      <div class="spotlight spotlight-a"></div>
+      <div class="spotlight spotlight-b"></div>
+      <div class="grid-mask"></div>
+    </div>
+
+    <main class="app-shell">
+      <section class="hero panel-card">
+        <div class="hero-copy">
+          <span class="badge-pill">หาเส้นทางอัตโนมัติ</span>
+          <h1>แอปวางเส้นทางรถตู้</h1>
+          <p>
+            ปักจุดรับคน แล้วแอปจะหาเส้นทางรับคนที่เร็วที่สุดให้อัตโนมัติ วิ่งตามถนนจริง แล้วไปส่งที่ บขส. ปลายทาง
+          </p>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-label">จุดออกรถ</span>
+            <strong id="startSourceMetric">รอกำหนด</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">จุดรับคน</span>
+            <strong id="pickupCountMetric">0 จุด</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">แผนที่</span>
+            <strong id="mapModeMetric">ดูแผนที่</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="control-panel">
+          <div class="step-flow">
+            <section class="panel-card step-card" id="startStepCard" data-step="start">
+              <button
+                class="step-summary"
+                id="startStepSummaryButton"
+                type="button"
+                aria-expanded="true"
+                aria-controls="startStepBody"
+              >
+                <span class="step-summary__index">1</span>
+                <span class="step-summary__content">
+                  <span class="eyebrow">ขั้นที่ 1</span>
+                  <span class="step-summary__title">ออกรถจากไหน?</span>
+                  <span class="step-summary__meta" id="startStepMeta">ยังไม่ได้ตั้งจุดออกรถ</span>
+                </span>
+                <span class="status-chip neutral" id="gpsChip">ยังไม่ได้เปิด GPS</span>
+              </button>
+              <div class="step-body" id="startStepBody">
+                <p class="helper-text" id="startStatus">ยังไม่ได้ตั้งจุดออกรถ</p>
+                <div class="button-row button-row-step">
+                  <button class="btn btn-primary" id="useGpsButton" type="button">ใช้ตำแหน่งปัจจุบัน</button>
+                  <button class="btn btn-secondary" id="manualStartButton" type="button">จิ้มเลือกบนแผนที่</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel-card step-card" id="destinationStepCard" data-step="destination">
+              <button
+                class="step-summary"
+                id="destinationStepSummaryButton"
+                type="button"
+                aria-expanded="false"
+                aria-controls="destinationStepBody"
+              >
+                <span class="step-summary__index">2</span>
+                <span class="step-summary__content">
+                  <span class="eyebrow">ขั้นที่ 2</span>
+                  <span class="step-summary__title">จะไปส่งที่ไหน?</span>
+                  <span class="step-summary__meta" id="destinationStepMeta">ยังไม่ได้เลือกปลายทาง</span>
+                </span>
+              </button>
+              <div class="step-body hidden" id="destinationStepBody">
+                <label class="input-label" for="destinationSelect">เลือก บขส. ปลายทาง</label>
+                <select class="field-control" id="destinationSelect">
+                  <option value="">-- เลือกจากรายการ --</option>
+                </select>
+                <div class="button-row button-row-step button-row-step--single">
+                  <button class="btn btn-secondary" id="pickDestinationButton" type="button">
+                    จิ้มเลือกปลายทางบนแผนที่
+                  </button>
+                </div>
+                <p class="helper-text" id="destinationSummary">ยังไม่ได้เลือกปลายทาง</p>
+              </div>
+            </section>
+
+            <section class="panel-card step-card" id="pickupStepCard" data-step="pickup">
+              <button
+                class="step-summary"
+                id="pickupStepSummaryButton"
+                type="button"
+                aria-expanded="false"
+                aria-controls="pickupStepBody"
+              >
+                <span class="step-summary__index">3</span>
+                <span class="step-summary__content">
+                  <span class="eyebrow">ขั้นที่ 3</span>
+                  <span class="step-summary__title">รับคนที่ไหนบ้าง?</span>
+                  <span class="step-summary__meta" id="pickupStepMeta">ยังไม่มีจุดรับ</span>
+                </span>
+                <span class="status-chip neutral" id="pickupWarning">พร้อม</span>
+              </button>
+              <div class="step-body hidden" id="pickupStepBody">
+                <div class="button-row button-row-step">
+                  <button class="btn btn-primary" id="pickupModeButton" type="button">ปักจุดรับคน</button>
+                  <button class="btn btn-danger" id="clearPickupsButton" type="button">ลบจุดรับทั้งหมด</button>
+                </div>
+                <ol class="pickup-list" id="pickupList"></ol>
+              </div>
+            </section>
+          </div>
+
+          <div class="panel-card stack-card compute-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">คำนวณ</p>
+                <h2>หาเส้นทาง</h2>
+              </div>
+            </div>
+            <div class="button-row button-row-step">
+              <button class="btn btn-primary" id="calculateButton" type="button" disabled>
+                หาเส้นทาง
+              </button>
+              <button class="btn btn-danger" id="clearRouteButton" type="button">
+                ล้างเส้นทาง
+              </button>
+            </div>
+            <div class="compute-status">
+              <div class="compute-progress">
+                <span class="compute-progress__label" id="progressText">ยังไม่เริ่ม</span>
+              </div>
+              <p class="helper-text" id="statusBanner">
+                ตั้งจุดออกรถ + เลือกปลายทางก่อน แล้วค่อยกดหาเส้นทาง
+              </p>
+            </div>
+          </div>
+
+          <div class="panel-card stack-card sim-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">ดูเส้นทาง</p>
+                <h2>จำลองรถวิ่ง</h2>
+              </div>
+              <span class="status-chip neutral" id="simStateChip">รอหาเส้นทาง</span>
+            </div>
+
+            <div class="sim-progress-track" id="simProgressTrack">
+              <div class="sim-progress-fill" id="simProgressFill" style="width:0%"></div>
+            </div>
+            <div class="sim-progress-meta">
+              <span id="simProgressLabel">0%</span>
+              <span id="simCheckpointLabel">0 / 0 จุด</span>
+            </div>
+
+            <div class="sim-controls">
+              <button class="sim-btn sim-btn--play" id="simulationStartButton" type="button" disabled title="เริ่ม">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <button class="sim-btn sim-btn--pause" id="simulationPauseButton" type="button" disabled title="หยุดชั่วคราว">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+              </button>
+              <button class="sim-btn sim-btn--reset" id="simulationResetButton" type="button" disabled title="รีเซ็ต">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              </button>
+            </div>
+
+            <div class="sim-speed">
+              <label class="sim-speed__label">ความเร็ว</label>
+              <div class="sim-speed__buttons" id="simSpeedButtons"></div>
+            </div>
+
+            <p class="helper-text sim-status-text" id="simulationStatus">
+              กดหาเส้นทางก่อน แล้วจะเปิดจำลองรถวิ่งได้
+            </p>
+          </div>
+        </aside>
+
+        <section class="visual-panel">
+          <div class="panel-card map-card">
+            <div class="map-toolbar">
+              <span class="status-chip warn selection-hint hidden" id="selectionHint">จิ้มบนแผนที่เพื่อเลือกจุด</span>
+              <button class="btn btn-warning hidden" id="cancelMapModeButton" type="button">ยกเลิก</button>
+              <span class="status-chip neutral" id="mapModeIndicator">ดูแผนที่</span>
+              <span class="status-chip neutral" id="routeStateChip">ยังไม่มีเส้นทาง</span>
+            </div>
+            <div id="map" class="map-frame" aria-label="Van pickup route map"></div>
+          </div>
+        </section>
+      </section>
+
+      <div class="detail-sheet hidden" id="detailSheet" role="dialog" aria-modal="true" aria-labelledby="detailSheetTitle">
+        <button class="detail-sheet__backdrop" id="detailSheetBackdrop" type="button" aria-label="ปิดรายละเอียด"></button>
+        <section class="detail-sheet__panel">
+          <div class="detail-sheet__header">
+            <div>
+              <p class="eyebrow" id="detailSheetEyebrow">ผลลัพธ์</p>
+              <h2 id="detailSheetTitle">สรุปเส้นทาง</h2>
+            </div>
+            <button class="btn btn-ghost" id="closeDetailSheetButton" type="button">ปิด</button>
+          </div>
+
+          <div class="detail-sheet__content">
+            <section class="detail-panel" id="resultDetailPanel">
+              <div class="summary-grid">
+                <div class="summary-card">
+                  <span class="summary-label">จำนวนเที่ยว</span>
+                  <strong id="summaryLegs">0 ช่วง</strong>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">ระยะทางรวม</span>
+                  <strong id="summaryDistance">0 กม.</strong>
+                </div>
+                <div class="summary-card">
+                  <span class="summary-label">เวลาวิ่งรวม</span>
+                  <strong id="summaryDuration">0 นาที</strong>
+                </div>
+                <div class="summary-card wide">
+                  <span class="summary-label">ลำดับรับคน</span>
+                  <strong id="summaryOrder">ยังไม่มีเส้นทาง</strong>
+                </div>
+              </div>
+            </section>
+
+            <section class="detail-panel hidden" id="complexityDetailPanel">
+              <div id="complexityContainer" class="complexity-shell">
+                <p class="helper-text">
+                  ตาราง line-by-line frequency count จะแสดงหลังคำนวณเส้นทาง
+                </p>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="./js/main.js"></script>
+
+    <div class="loading-overlay hidden" id="loadingOverlay" role="status" aria-live="polite">
+      <div class="loading-overlay__card">
+        <div class="loading-overlay__spinner" aria-hidden="true"></div>
+        <p class="loading-overlay__label" id="loadingOverlayLabel">กำลังหาเส้นทาง...</p>
+      </div>
+    </div>
+  </body>
+</html>

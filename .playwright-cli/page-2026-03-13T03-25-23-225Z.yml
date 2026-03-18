@@ -1,0 +1,87 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - button "1 Start จุดเริ่มต้น ยังไม่กำหนดจุดเริ่ม รอผู้ใช้กดขอ GPS" [expanded] [ref=e7] [cursor=pointer]:
+            - generic [ref=e8]: "1"
+            - generic [ref=e9]:
+              - generic [ref=e10]: Start
+              - generic [ref=e11]: จุดเริ่มต้น
+              - generic [ref=e12]: ยังไม่กำหนดจุดเริ่ม
+            - generic [ref=e13]: รอผู้ใช้กดขอ GPS
+          - generic [ref=e14]:
+            - paragraph [ref=e15]: ยังไม่ได้กำหนดจุดเริ่มต้น
+            - generic [ref=e16]:
+              - button "ใช้ GPS ปัจจุบัน" [ref=e17] [cursor=pointer]
+              - button "คลิกเลือกจุดเริ่ม" [ref=e18] [cursor=pointer]
+        - button "2 Destination ปลายทาง ยังไม่ได้เลือกปลายทาง" [ref=e20] [cursor=pointer]:
+          - generic [ref=e21]: "2"
+          - generic [ref=e22]:
+            - generic [ref=e23]: Destination
+            - generic [ref=e24]: ปลายทาง
+            - generic [ref=e25]: ยังไม่ได้เลือกปลายทาง
+        - button "3 Pickups จุดรับผู้โดยสาร ยังไม่มีจุดรับ พร้อมใช้งาน" [ref=e27] [cursor=pointer]:
+          - generic [ref=e28]: "3"
+          - generic [ref=e29]:
+            - generic [ref=e30]: Pickups
+            - generic [ref=e31]: จุดรับผู้โดยสาร
+            - generic [ref=e32]: ยังไม่มีจุดรับ
+          - generic [ref=e33]: พร้อมใช้งาน
+      - generic [ref=e34]:
+        - generic [ref=e36]:
+          - paragraph [ref=e37]: Compute
+          - heading "คำนวณเส้นทาง" [level=2] [ref=e38]
+        - generic [ref=e39]:
+          - button "คำนวณเส้นทาง" [disabled] [ref=e40]
+          - button "ล้างผลลัพธ์" [ref=e41] [cursor=pointer]
+        - generic [ref=e42]:
+          - generic [ref=e43]: OSRM Progress
+          - strong [ref=e44]: ยังไม่เริ่ม
+        - paragraph [ref=e45]: ต้องมีจุดเริ่มต้นและปลายทางก่อน จึงจะเริ่มคำนวณได้
+      - generic [ref=e46]:
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Simulation
+          - heading "จำลองการวิ่ง" [level=2] [ref=e50]
+        - generic [ref=e51]:
+          - button "เริ่ม Simulation" [disabled] [ref=e52]
+          - button "Pause" [disabled] [ref=e53]
+          - button "Reset" [disabled] [ref=e54]
+        - paragraph [ref=e55]: จะเปิดใช้งานหลังคำนวณเส้นทางสำเร็จ
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - paragraph [ref=e60]: Map
+            - heading "แผนที่เส้นทาง" [level=2] [ref=e61]
+          - generic [ref=e62]:
+            - generic [ref=e63]: "โหมด: ดูแผนที่"
+            - generic [ref=e64]: ยังไม่มีผลลัพธ์
+        - generic "Van pickup route map" [ref=e65]:
+          - generic:
+            - generic [ref=e66]:
+              - button "Zoom in" [ref=e67] [cursor=pointer]: +
+              - button "Zoom out" [ref=e68] [cursor=pointer]: −
+            - generic [ref=e69]:
+              - link "Leaflet" [ref=e70] [cursor=pointer]:
+                - /url: https://leafletjs.com
+                - img [ref=e71]
+                - text: Leaflet
+              - text: "| ©"
+              - link "OpenStreetMap" [ref=e75] [cursor=pointer]:
+                - /url: https://www.openstreetmap.org/copyright
+      - generic [ref=e76]:
+        - button "Result สรุปเส้นทาง ดูรายละเอียด 0 ช่วง • 0 กม. • 0 นาที" [ref=e77] [cursor=pointer]:
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - generic [ref=e80]: Result
+              - generic [ref=e81]: สรุปเส้นทาง
+            - generic [ref=e82]: ดูรายละเอียด
+          - generic [ref=e83]: 0 ช่วง • 0 กม. • 0 นาที
+        - button "Complexity Time Complexity ดูรายละเอียด ตารางจะแสดงหลังคำนวณเส้นทาง" [ref=e84] [cursor=pointer]:
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: Complexity
+              - generic [ref=e88]: Time Complexity
+            - generic [ref=e89]: ดูรายละเอียด
+          - generic [ref=e90]: ตารางจะแสดงหลังคำนวณเส้นทาง

@@ -1,0 +1,23 @@
+[   56145ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;100.5,7.2?overview=full&geometries=geojson:0
+[   56146ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;100.55,7.25?overview=full&geometries=geojson:0
+[   56641ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;100.55,7.25?overview=full&geometries=geojson:0
+[   56826ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;100.6,7.3?overview=full&geometries=geojson:0
+[   57323ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;100.6,7.3?overview=full&geometries=geojson:0
+[   57507ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;98.53,8.45?overview=full&geometries=geojson:0
+[   58005ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.51,7.21;98.53,8.45?overview=full&geometries=geojson:0
+[   58190ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.55,7.25;100.5,7.2?overview=full&geometries=geojson:0
+[   58681ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.55,7.25;100.5,7.2?overview=full&geometries=geojson:0
+[   58865ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://router.project-osrm.org/route/v1/driving/100.55,7.25;100.51,7.21?overview=full&geometries=geojson:0
+[   99440ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.6,7.3;100.5,7.2?overview=full&geometries=geojson:0
+[   99730ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.6,7.3;100.51,7.21?overview=full&geometries=geojson:0
+[   99746ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.6,7.3;100.55,7.25?overview=full&geometries=geojson:0
+[   99747ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.6,7.3;98.53,8.45?overview=full&geometries=geojson:0
+[   99748ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.55,7.25;100.6,7.3?overview=full&geometries=geojson:0
+[   99749ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.55,7.25;98.53,8.45?overview=full&geometries=geojson:0
+[  120769ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.55,7.25?overview=full&geometries=geojson:0
+[  121011ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.6,7.3?overview=full&geometries=geojson:0
+[  121080ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.5,7.2?overview=full&geometries=geojson:0
+[  121113ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.51,7.21?overview=full&geometries=geojson:0
+[  121364ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.55,7.25?overview=full&geometries=geojson:0
+[  121382ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/98.53,8.45;100.6,7.3?overview=full&geometries=geojson:0
+[  142111ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/route/v1/driving/100.5,7.2;100.51,7.21?overview=full&geometries=geojson:0

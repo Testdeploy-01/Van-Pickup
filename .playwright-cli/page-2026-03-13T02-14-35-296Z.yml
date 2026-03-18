@@ -1,0 +1,134 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: Leaflet + OSM + OSRM + Dijkstra + Greedy
+      - heading "Van Pickup Planner" [level=1] [ref=e6]
+      - paragraph [ref=e7]: วางแผนเส้นทางรถตู้จากตำแหน่งผู้ใช้ รับผู้โดยสารตามจุดที่ปักไว้ แล้วไปส่งที่ บขส. ปลายทาง โดยลดเวลาเดินทางรวมให้น้อยที่สุด
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: Start Source
+        - strong [ref=e11]: "เธขเธฑเธ\x87เน\x84เธกเน\x88เธ\x81เธณเธซเธ\x99เธ”"
+      - generic [ref=e12]:
+        - generic [ref=e13]: Pickup Count
+        - strong [ref=e14]: "0 เธ\x88เธธเธ”"
+      - generic [ref=e15]:
+        - generic [ref=e16]: Map Mode
+        - strong [ref=e17]: เลือกจุดเริ่ม
+  - generic [ref=e18]:
+    - complementary:
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: Start
+            - heading "จุดเริ่มต้น" [level=2]
+          - generic: "GPS เธ–เธนเธ\x81เธ\x9bเธ\x8fเธดเน€เธชเธ\x98"
+        - paragraph: "การขอ GPS ใช้เวลานานเกินกำหนด เน\x82เธ\x9bเธฃเธ”เธ\x84เธฅเธดเธ\x81เน€เธฅเธทเธญเธ\x81เธ\x88เธธเธ”เน€เธฃเธดเน\x88เธกเธ\x9aเธ\x99เน\x81เธ\x9cเธ\x99เธ—เธตเน\x88"
+        - generic:
+          - button "ใช้ GPS ปัจจุบัน"
+          - button "คลิกเลือกจุดเริ่ม"
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: Destination
+            - heading "ปลายทาง" [level=2]
+        - generic: เลือก บขส. ภาคใต้
+        - combobox "เลือก บขส. ภาคใต้":
+          - option "เลือกปลายทางจากรายการ" [selected]
+          - option "ชุมพร - บขส.ชุมพร"
+          - option "ระนอง - บขส.ระนอง"
+          - option "สุราษฎร์ธานี - บขส.สุราษฎร์ธานี"
+          - option "นครศรีธรรมราช - บขส.นครศรีธรรมราช"
+          - option "พัทลุง - บขส.พัทลุง"
+          - option "สงขลา - บขส.สงขลา"
+          - option "สตูล - บขส.สตูล"
+          - option "ตรัง - บขส.ตรัง"
+          - option "กระบี่ - บขส.กระบี่"
+          - option "ภูเก็ต - บขส.ภูเก็ต"
+          - option "พังงา - บขส.พังงา"
+          - option "ยะลา - บขส.ยะลา"
+          - option "ปัตตานี - บขส.ปัตตานี"
+          - option "นราธิวาส - บขส.นราธิวาส"
+        - generic:
+          - button "เลือกปลายทางบนแผนที่"
+        - paragraph: ยังไม่ได้เลือกปลายทาง
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: Pickups
+            - heading "จุดรับผู้โดยสาร" [level=2]
+          - generic: "เธ\x9eเธฃเน\x89เธญเธกเน\x83เธ\x8aเน\x89เธ\x87เธฒเธ\x99"
+        - generic:
+          - button "เปิดโหมดเพิ่มจุดรับ"
+          - button "ล้างจุดรับทั้งหมด"
+        - paragraph: คลิกบนแผนที่เพื่อเพิ่มจุดรับ, คลิก marker เพื่อลบ, หรือ drag marker เพื่อย้ายตำแหน่ง
+        - list:
+          - listitem: "เธขเธฑเธ\x87เน\x84เธกเน\x88เธกเธตเธ\x88เธธเธ”เธฃเธฑเธ\x9aเธ\x9cเธนเน\x89เน\x82เธ”เธขเธชเธฒเธฃ"
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: Compute
+            - heading "คำนวณเส้นทาง" [level=2]
+        - generic:
+          - button "คำนวณเส้นทาง" [disabled]
+          - button "ล้างผลลัพธ์"
+        - generic:
+          - generic: OSRM Progress
+          - strong: ยังไม่เริ่ม
+        - paragraph: ต้องมีจุดเริ่มต้นและปลายทางก่อน จึงจะเริ่มคำนวณได้
+      - generic:
+        - generic:
+          - generic:
+            - paragraph: Simulation
+            - heading "จำลองการวิ่ง" [level=2]
+        - generic:
+          - button "เริ่ม Simulation" [disabled]
+          - button "Pause" [disabled]
+          - button "Reset" [disabled]
+        - paragraph: จะเปิดใช้งานหลังคำนวณเส้นทางสำเร็จ
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Map
+            - heading "แผนที่เส้นทาง" [level=2] [ref=e79]
+          - generic [ref=e80]:
+            - generic [ref=e119]: คลิกบนแผนที่เพื่อเลือกจุดเริ่มต้น
+            - button "ยกเลิกโหมดเลือก" [ref=e120] [cursor=pointer]
+            - generic [ref=e81]: "โหมด: เลือกจุดเริ่ม"
+            - generic [ref=e82]: ยังไม่มีผลลัพธ์
+        - generic "Van pickup route map" [ref=e83]:
+          - generic:
+            - generic [ref=e84]:
+              - button "Zoom in" [ref=e85] [cursor=pointer]: +
+              - button "Zoom out" [ref=e86] [cursor=pointer]: −
+            - generic [ref=e87]:
+              - link "Leaflet" [ref=e88] [cursor=pointer]:
+                - /url: https://leafletjs.com
+                - img [ref=e89]
+                - text: Leaflet
+              - text: "| ©"
+              - link "OpenStreetMap" [ref=e93] [cursor=pointer]:
+                - /url: https://www.openstreetmap.org/copyright
+      - generic:
+        - generic [ref=e94]:
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Result
+            - heading "สรุปเส้นทาง" [level=2] [ref=e98]
+          - generic [ref=e99]:
+            - generic [ref=e100]:
+              - generic [ref=e101]: จำนวนช่วงวิ่ง
+              - strong [ref=e102]: "0 เธ\x8aเน\x88เธงเธ\x87"
+            - generic [ref=e103]:
+              - generic [ref=e104]: ระยะทางรวม
+              - strong [ref=e105]: "0 เธ\x81เธก."
+            - generic [ref=e106]:
+              - generic [ref=e107]: เวลารวม
+              - strong [ref=e108]: "0 เธ\x99เธฒเธ—เธต"
+            - generic [ref=e109]:
+              - generic [ref=e110]: ลำดับการวิ่ง
+              - strong [ref=e111]: "เธขเธฑเธ\x87เน\x84เธกเน\x88เธกเธตเน€เธชเน\x89เธ\x99เธ—เธฒเธ\x87"
+        - generic [ref=e112]:
+          - generic [ref=e114]:
+            - paragraph [ref=e115]: Complexity
+            - heading "Time Complexity" [level=2] [ref=e116]
+          - paragraph [ref=e118]: ตาราง line-by-line frequency count จะแสดงหลังคำนวณเส้นทาง

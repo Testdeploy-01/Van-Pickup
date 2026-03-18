@@ -1,0 +1,16 @@
+export const SOUTHERN_BKS = [
+  { id: "chumphon", province: "ชุมพร", name: "บขส.ชุมพร", lat: 10.4935, lng: 99.1808 },
+  { id: "ranong", province: "ระนอง", name: "บขส.ระนอง", lat: 9.9524, lng: 98.6381 },
+  { id: "surat-thani", province: "สุราษฎร์ธานี", name: "บขส.สุราษฎร์ธานี", lat: 9.1397, lng: 99.3324 },
+  { id: "nakhon-si-thammarat", province: "นครศรีธรรมราช", name: "บขส.นครศรีธรรมราช", lat: 8.4319, lng: 99.9635 },
+  { id: "phatthalung", province: "พัทลุง", name: "บขส.พัทลุง", lat: 7.6177, lng: 100.0744 },
+  { id: "songkhla", province: "สงขลา", name: "บขส.สงขลา", lat: 7.0081, lng: 100.4746 },
+  { id: "satun", province: "สตูล", name: "บขส.สตูล", lat: 6.6232, lng: 100.0675 },
+  { id: "trang", province: "ตรัง", name: "บขส.ตรัง", lat: 7.5539, lng: 99.6112 },
+  { id: "krabi", province: "กระบี่", name: "บขส.กระบี่", lat: 8.0712, lng: 98.9061 },
+  { id: "phuket", province: "ภูเก็ต", name: "บขส.ภูเก็ต", lat: 7.8964, lng: 98.3929 },
+  { id: "phang-nga", province: "พังงา", name: "บขส.พังงา", lat: 8.4508, lng: 98.5292 },
+  { id: "yala", province: "ยะลา", name: "บขส.ยะลา", lat: 6.5413, lng: 101.2804 },
+  { id: "pattani", province: "ปัตตานี", name: "บขส.ปัตตานี", lat: 6.8698, lng: 101.2507 },
+  { id: "narathiwat", province: "นราธิวาส", name: "บขส.นราธิวาส", lat: 6.4262, lng: 101.8230 },
+];

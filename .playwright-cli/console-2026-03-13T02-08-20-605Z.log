@@ -1,0 +1,3 @@
+[   55088ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/nearest/v1/driving/99.98992512515187,7.9677799799421?number=1:0
+[   70399ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/nearest/v1/driving/100.04636681861216,7.951284624447565?number=1:0
+[   81025ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_TIMED_OUT @ https://router.project-osrm.org/nearest/v1/driving/100.04636681861216,7.951284624447565?number=1:0

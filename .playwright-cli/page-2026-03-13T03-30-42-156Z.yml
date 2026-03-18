@@ -1,0 +1,104 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - button "1 Start จุดเริ่มต้น GPS • ถนนทดสอบ รอผู้ใช้กดขอ GPS" [ref=e7] [cursor=pointer]:
+          - generic [ref=e8]: "1"
+          - generic [ref=e9]:
+            - generic [ref=e10]: Start
+            - generic [ref=e11]: จุดเริ่มต้น
+            - generic [ref=e12]: GPS • ถนนทดสอบ
+          - generic [ref=e13]: รอผู้ใช้กดขอ GPS
+        - generic [ref=e14]:
+          - button "2 Destination ปลายทาง ยังไม่ได้เลือกปลายทาง" [expanded] [ref=e15] [cursor=pointer]:
+            - generic [ref=e16]: "2"
+            - generic [ref=e17]:
+              - generic [ref=e18]: Destination
+              - generic [ref=e19]: ปลายทาง
+              - generic [ref=e20]: ยังไม่ได้เลือกปลายทาง
+          - generic [ref=e21]:
+            - generic [ref=e22]: เลือก บขส. ภาคใต้
+            - combobox "เลือก บขส. ภาคใต้" [ref=e23]:
+              - option "เลือกปลายทางจากรายการ" [selected]
+              - option "ชุมพร - บขส.ชุมพร"
+              - option "ระนอง - บขส.ระนอง"
+              - option "สุราษฎร์ธานี - บขส.สุราษฎร์ธานี"
+              - option "นครศรีธรรมราช - บขส.นครศรีธรรมราช"
+              - option "พัทลุง - บขส.พัทลุง"
+              - option "สงขลา - บขส.สงขลา"
+              - option "สตูล - บขส.สตูล"
+              - option "ตรัง - บขส.ตรัง"
+              - option "กระบี่ - บขส.กระบี่"
+              - option "ภูเก็ต - บขส.ภูเก็ต"
+              - option "พังงา - บขส.พังงา"
+              - option "ยะลา - บขส.ยะลา"
+              - option "ปัตตานี - บขส.ปัตตานี"
+              - option "นราธิวาส - บขส.นราธิวาส"
+            - button "เลือกปลายทางบนแผนที่" [ref=e25] [cursor=pointer]
+            - paragraph [ref=e26]: ยังไม่ได้เลือกปลายทาง
+        - button "3 Pickups จุดรับผู้โดยสาร ยังไม่มีจุดรับ พร้อมใช้งาน" [ref=e28] [cursor=pointer]:
+          - generic [ref=e29]: "3"
+          - generic [ref=e30]:
+            - generic [ref=e31]: Pickups
+            - generic [ref=e32]: จุดรับผู้โดยสาร
+            - generic [ref=e33]: ยังไม่มีจุดรับ
+          - generic [ref=e34]: พร้อมใช้งาน
+      - generic [ref=e35]:
+        - generic [ref=e37]:
+          - paragraph [ref=e38]: Compute
+          - heading "คำนวณเส้นทาง" [level=2] [ref=e39]
+        - generic [ref=e40]:
+          - button "คำนวณเส้นทาง" [disabled] [ref=e41]
+          - button "ล้างผลลัพธ์" [ref=e42] [cursor=pointer]
+        - generic [ref=e43]:
+          - generic [ref=e44]: OSRM Progress
+          - strong [ref=e45]: ยังไม่เริ่ม
+        - paragraph [ref=e46]: ต้องมีจุดเริ่มต้นและปลายทางก่อน จึงจะเริ่มคำนวณได้
+      - generic [ref=e47]:
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Simulation
+          - heading "จำลองการวิ่ง" [level=2] [ref=e51]
+        - generic [ref=e52]:
+          - button "เริ่ม Simulation" [disabled] [ref=e53]
+          - button "Pause" [disabled] [ref=e54]
+          - button "Reset" [disabled] [ref=e55]
+        - paragraph [ref=e56]: จะเปิดใช้งานหลังคำนวณเส้นทางสำเร็จ
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: Map
+            - heading "แผนที่เส้นทาง" [level=2] [ref=e62]
+          - generic [ref=e63]:
+            - generic [ref=e64]: "โหมด: ดูแผนที่"
+            - generic [ref=e65]: ยังไม่มีผลลัพธ์
+        - generic "Van pickup route map" [ref=e66]:
+          - button "S" [ref=e67] [cursor=pointer]:
+            - generic [ref=e68]: S
+          - generic:
+            - generic [ref=e69]:
+              - button "Zoom in" [ref=e70] [cursor=pointer]: +
+              - button "Zoom out" [ref=e71] [cursor=pointer]: −
+            - generic [ref=e72]:
+              - link "Leaflet" [ref=e73] [cursor=pointer]:
+                - /url: https://leafletjs.com
+                - img [ref=e74]
+                - text: Leaflet
+              - text: "| ©"
+              - link "OpenStreetMap" [ref=e78] [cursor=pointer]:
+                - /url: https://www.openstreetmap.org/copyright
+      - generic [ref=e79]:
+        - button "Result สรุปเส้นทาง ดูรายละเอียด 0 ช่วง • 0 กม. • 0 นาที" [ref=e80] [cursor=pointer]:
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e83]: Result
+              - generic [ref=e84]: สรุปเส้นทาง
+            - generic [ref=e85]: ดูรายละเอียด
+          - generic [ref=e86]: 0 ช่วง • 0 กม. • 0 นาที
+        - button "Complexity Time Complexity ดูรายละเอียด ตารางจะแสดงหลังคำนวณเส้นทาง" [ref=e87] [cursor=pointer]:
+          - generic [ref=e88]:
+            - generic [ref=e89]:
+              - generic [ref=e90]: Complexity
+              - generic [ref=e91]: Time Complexity
+            - generic [ref=e92]: ดูรายละเอียด
+          - generic [ref=e93]: ตารางจะแสดงหลังคำนวณเส้นทาง

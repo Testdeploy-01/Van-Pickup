@@ -1,0 +1,105 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - button "1 Start จุดเริ่มต้น GPS • ถนนทดสอบ รอผู้ใช้กดขอ GPS" [ref=e7] [cursor=pointer]:
+          - generic [ref=e8]: "1"
+          - generic [ref=e9]:
+            - generic [ref=e10]: Start
+            - generic [ref=e11]: จุดเริ่มต้น
+            - generic [ref=e12]: GPS • ถนนทดสอบ
+          - generic [ref=e13]: รอผู้ใช้กดขอ GPS
+        - button "2 Destination ปลายทาง บขส.พังงา" [ref=e15] [cursor=pointer]:
+          - generic [ref=e16]: "2"
+          - generic [ref=e17]:
+            - generic [ref=e18]: Destination
+            - generic [ref=e19]: ปลายทาง
+            - generic [ref=e20]: บขส.พังงา
+        - generic [ref=e21]:
+          - button "3 Pickups จุดรับผู้โดยสาร 2 จุดรับ มีจุดรับ 2 จุด" [expanded] [ref=e22] [cursor=pointer]:
+            - generic [ref=e23]: "3"
+            - generic [ref=e24]:
+              - generic [ref=e25]: Pickups
+              - generic [ref=e26]: จุดรับผู้โดยสาร
+              - generic [ref=e27]: 2 จุดรับ
+            - generic [ref=e28]: มีจุดรับ 2 จุด
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - button "เปิดโหมดเพิ่มจุดรับ" [ref=e31] [cursor=pointer]
+              - button "ล้างจุดรับทั้งหมด" [ref=e32] [cursor=pointer]
+            - list [ref=e33]:
+              - listitem [ref=e34]:
+                - strong [ref=e35]: Pickup 1
+                - generic [ref=e36]: 7.2200, 100.5800
+                - generic [ref=e37]: "ถนน: ถนนราษฎร์ยินดี"
+              - listitem [ref=e38]:
+                - strong [ref=e39]: Pickup 2
+                - generic [ref=e40]: 7.2500, 100.5900
+                - generic [ref=e41]: "ถนน: ถนนกาญจนวนิช"
+      - generic [ref=e42]:
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Compute
+          - heading "คำนวณเส้นทาง" [level=2] [ref=e46]
+        - generic [ref=e47]:
+          - button "คำนวณเส้นทาง" [ref=e48] [cursor=pointer]
+          - button "ล้างผลลัพธ์" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]:
+          - generic [ref=e51]: OSRM Progress
+          - strong [ref=e52]: ยังไม่เริ่ม
+        - paragraph [ref=e53]: ต้องมีจุดเริ่มต้นและปลายทางก่อน จึงจะเริ่มคำนวณได้
+      - generic [ref=e54]:
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: Simulation
+          - heading "จำลองการวิ่ง" [level=2] [ref=e58]
+        - generic [ref=e59]:
+          - button "เริ่ม Simulation" [disabled] [ref=e60]
+          - button "Pause" [disabled] [ref=e61]
+          - button "Reset" [disabled] [ref=e62]
+        - paragraph [ref=e63]: จะเปิดใช้งานหลังคำนวณเส้นทางสำเร็จ
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: Map
+            - heading "แผนที่เส้นทาง" [level=2] [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]: "โหมด: ดูแผนที่"
+            - generic [ref=e72]: ยังไม่มีผลลัพธ์
+        - generic "Van pickup route map" [ref=e73]:
+          - generic:
+            - generic:
+              - button "S" [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]: S
+              - button "E" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]: E
+              - button "1" [ref=e78] [cursor=pointer]:
+                - generic [ref=e79]: "1"
+              - button "2" [ref=e80] [cursor=pointer]:
+                - generic [ref=e81]: "2"
+          - generic:
+            - generic [ref=e82]:
+              - button "Zoom in" [ref=e83] [cursor=pointer]: +
+              - button "Zoom out" [ref=e84] [cursor=pointer]: −
+            - generic [ref=e85]:
+              - link "Leaflet" [ref=e86] [cursor=pointer]:
+                - /url: https://leafletjs.com
+                - img [ref=e87]
+                - text: Leaflet
+              - text: "| ©"
+              - link "OpenStreetMap" [ref=e91] [cursor=pointer]:
+                - /url: https://www.openstreetmap.org/copyright
+      - generic [ref=e92]:
+        - button "Result สรุปเส้นทาง ดูรายละเอียด 0 ช่วง • 0 กม. • 0 นาที" [ref=e93] [cursor=pointer]:
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: Result
+              - generic [ref=e97]: สรุปเส้นทาง
+            - generic [ref=e98]: ดูรายละเอียด
+          - generic [ref=e99]: 0 ช่วง • 0 กม. • 0 นาที
+        - button "Complexity Time Complexity ดูรายละเอียด ตารางจะแสดงหลังคำนวณเส้นทาง" [ref=e100] [cursor=pointer]:
+          - generic [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]: Complexity
+              - generic [ref=e104]: Time Complexity
+            - generic [ref=e105]: ดูรายละเอียด
+          - generic [ref=e106]: ตารางจะแสดงหลังคำนวณเส้นทาง
