@@ -60,7 +60,7 @@ export function createSimulationController({ map, onStatusChange, onSpeedChange,
 
   function ensureTrail() {
     if (trailLine) {
-      map.removeLayer(trailLine);
+      return; // already exists — don't recreate, just reuse
     }
     trailLine = L.polyline([], {
       color: "hsl(151 55% 35%)",
@@ -101,7 +101,7 @@ export function createSimulationController({ map, onStatusChange, onSpeedChange,
   }
 
   function showCheckpoint(checkpoint) {
-    if (!vanMarker || announcedCheckpointIds.has(checkpoint.id)) {
+    if (announcedCheckpointIds.has(checkpoint.id)) {
       return;
     }
 
@@ -111,37 +111,20 @@ export function createSimulationController({ map, onStatusChange, onSpeedChange,
       ? `🏁 ถึงปลายทางแล้ว! ${checkpoint.label}`
       : `📍 รับคนแล้ว: ${checkpoint.label}`;
 
-    // Use a standalone popup with autoPan: false so the map does NOT jump
-    // when a checkpoint is reached during animation.
-    const popup = L.popup({
-      autoPan: false,
-      closeButton: false,
-      autoClose: false,
-      className: "sim-popup-wrapper",
-    })
-      .setLatLng(flatPath[checkpoint.pathIndex])
-      .setContent(`<div class="sim-popup"><strong>${label}</strong></div>`)
-      .openOn(map);
-
-    // Auto-close after 2 seconds so it doesn't clutter the map.
-    window.setTimeout(() => {
-      if (popup.isOpen()) {
-        map.closePopup(popup);
-      }
-    }, 2000);
-
+    // No Leaflet popup — popups call map.openPopup() which fires DOM events
+    // and causes layout thrash → dropped frames → van appears to jump.
+    // Instead, flash a circle marker and update the sidebar status text only.
     const cpMarker = L.circleMarker(flatPath[checkpoint.pathIndex], {
-      radius: 7,
+      radius: 10,
       color: isEnd ? "hsl(4 76% 56%)" : "hsl(41 96% 55%)",
       fillColor: isEnd ? "hsl(4 76% 56%)" : "hsl(41 96% 55%)",
-      fillOpacity: 0.85,
+      fillOpacity: 0.9,
       weight: 2,
       className: "sim-checkpoint-ring",
     }).addTo(map);
     checkpointMarkers.push(cpMarker);
 
     publishStatus(label);
-    // publishProgress() is called once in stepForward after this returns — no duplicate needed.
   }
 
   function stepForward() {
@@ -177,14 +160,20 @@ export function createSimulationController({ map, onStatusChange, onSpeedChange,
   function animationLoop(timestamp) {
     if (!animFrameId) return;
 
+    const intervalMs = getIntervalMs();
     const elapsed = timestamp - lastStepTime;
-    if (elapsed >= getIntervalMs()) {
-      stepForward();
-      lastStepTime = timestamp;
 
-      if (currentIndex >= flatPath.length - 1) {
-        return;
+    if (elapsed >= intervalMs) {
+      // How many steps we fell behind (e.g. after a checkpoint frame drop).
+      // Cap at 4 so we don't teleport across the map after a long pause.
+      const steps = Math.min(Math.floor(elapsed / intervalMs), 4);
+      for (let i = 0; i < steps; i += 1) {
+        stepForward();
+        if (currentIndex >= flatPath.length - 1) {
+          return; // stopAnimation() already called inside stepForward
+        }
       }
+      lastStepTime = timestamp;
     }
 
     animFrameId = window.requestAnimationFrame(animationLoop);
