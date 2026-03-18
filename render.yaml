@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: van-pickup
+    env: static
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /js/*
+        name: Content-Type
+        value: application/javascript; charset=utf-8

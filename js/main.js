@@ -1210,6 +1210,12 @@ function init() {
     map.invalidateSize();
   });
 
+  // Leaflet CSS loads from CDN — ensure map is sized correctly after
+  // all external resources (CSS, fonts) have fully loaded.
+  window.addEventListener("load", () => {
+    map.invalidateSize();
+  });
+
   state.simulation = createSimulationController({
     map,
     onStatusChange: (message) => {
