@@ -25,23 +25,23 @@
    ─────────────────────────────────────────────
 */
 
-export function runDijkstra(graph, sourceId) {                // Line 1: function Dijkstra(Graph, source)
+export function runDijkstra(graph, sourceId) {
 
-  const Q = new Set();                                        // Line 2: create vertex set Q
+  const Q = new Set();
   const dist = {};
   const prev = {};
 
-  graph.nodeMap.forEach((_node, nodeId) => {                  // Line 3: for each vertex v in Graph
-    dist[nodeId] = Number.POSITIVE_INFINITY;                  // Line 4: dist[v] ← INFINITY
-    prev[nodeId] = null;                                      // Line 5: prev[v] ← UNDEFINED
-    Q.add(nodeId);                                            // Line 6: add v to Q
+  graph.nodeMap.forEach((_node, nodeId) => {
+    dist[nodeId] = Number.POSITIVE_INFINITY;
+    prev[nodeId] = null;
+    Q.add(nodeId);
   });
 
-  dist[sourceId] = 0;                                        // Line 7: dist[source] ← 0
+  dist[sourceId] = 0;
 
-  while (Q.size > 0) {                                       // Line 8: while Q is not empty
+  while (Q.size > 0) {
 
-    // Line 9: u ← vertex in Q with min dist[u]
+
     // (Greedy choice: เลือก node ที่ระยะทางน้อยที่สุดเสมอ)
     let u = null;
     let minDist = Number.POSITIVE_INFINITY;
@@ -52,24 +52,24 @@ export function runDijkstra(graph, sourceId) {                // Line 1: functio
       }
     }
 
-    if (u === null) break;                                    // ไม่มี node ที่เข้าถึงได้แล้ว
+    if (u === null) break;
 
-    Q.delete(u);                                              // Line 10: remove u from Q
+    Q.delete(u);
 
     const neighbors = graph.adjacency.get(u) ?? [];
-    for (const neighbor of neighbors) {                       // Line 11: for each neighbor v of u
-      if (!Q.has(neighbor.toId)) continue;                    //          where v is still in Q
+    for (const neighbor of neighbors) {
+      if (!Q.has(neighbor.toId)) continue;
 
-      const alt = dist[u] + neighbor.weight;                  // Line 12: alt ← dist[u] + length(u, v)
+      const alt = dist[u] + neighbor.weight;
 
-      if (alt < dist[neighbor.toId]) {                        // Line 13: if alt < dist[v]
-        dist[neighbor.toId] = alt;                            // Line 14: dist[v] ← alt
-        prev[neighbor.toId] = u;                              // Line 15: prev[v] ← u
+      if (alt < dist[neighbor.toId]) {
+        dist[neighbor.toId] = alt;
+        prev[neighbor.toId] = u;
       }
     }
   }
 
-  return {                                                    // Line 16: return dist[], prev[]
+  return {
     dist,
     prev,
   };

@@ -803,7 +803,7 @@ select {
 }
 
 .complexity-shell {
-  max-height: 260px;
+  max-height: none;
   overflow: auto;
 }
 
@@ -828,7 +828,7 @@ select {
   bottom: 0;
   box-shadow: 0 -18px 42px hsla(214 33% 16% / 0.18);
   left: 50%;
-  max-height: min(72vh, 720px);
+  max-height: min(88vh, 920px);
   overflow: auto;
   padding: 18px 18px 24px;
   position: absolute;
@@ -889,6 +889,95 @@ select {
   font-family: "IBM Plex Sans Thai", sans-serif;
   font-size: 1rem;
   font-weight: 600;
+}
+
+/* Theory / Algorithm explanation */
+
+.theory-section {
+  margin-bottom: 20px;
+}
+
+.theory-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.theory-subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--primary);
+}
+
+.theory-block {
+  margin-bottom: 16px;
+}
+
+.theory-block p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 6px;
+}
+
+.theory-conditions {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.theory-conditions li {
+  font-size: 0.92rem;
+  padding-left: 18px;
+  position: relative;
+}
+
+.theory-conditions li::before {
+  content: "✓";
+  color: var(--success);
+  font-weight: 700;
+  position: absolute;
+  left: 0;
+}
+
+.theory-pseudocode {
+  background: hsla(216 19% 18% / 0.04);
+  border: 1px solid hsla(214 15% 30% / 0.10);
+  border-radius: 12px;
+  overflow-x: auto;
+  padding: 14px 16px;
+  margin: 0;
+}
+
+.theory-pseudocode code {
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  white-space: pre;
+  color: var(--foreground);
+}
+
+.theory-graph-desc {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin-bottom: 8px;
+}
+
+.theory-example-table td {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.theory-example-table th {
+  text-align: center;
+}
+
+.theory-divider {
+  border: none;
+  border-top: 1px solid hsla(214 15% 30% / 0.10);
+  margin: 20px 0;
 }
 
 .map-pin {
@@ -1089,9 +1178,9 @@ select {
 }
 
 @keyframes sim-ring-pop {
-  0%   { transform: scale(0); opacity: 0; }
-  60%  { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 1; }
 }
 
 /* ── Simulation popup ── */
